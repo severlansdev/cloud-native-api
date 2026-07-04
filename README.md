@@ -47,7 +47,7 @@ Get the full stack running in **3 commands**:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/YOUR_USERNAME/cloud-native-api.git
+git clone https://github.com/severlansdev/cloud-native-api.git
 cd cloud-native-api
 
 # 2. Start the full stack (API + Prometheus + Grafana + LocalStack)
@@ -269,5 +269,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 <p align="center">
-  <sub>Built with ❤️ by <a href="https://github.com/YOUR_USERNAME">Brayan PD</a> — DevOps / SRE Engineer</sub>
+  <sub>Built with ❤️ by <a href="https://github.com/severlansdev">Brayan PD</a> — DevOps / SRE Engineer</sub>
 </p>

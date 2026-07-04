@@ -31,7 +31,7 @@ FROM gcr.io/distroless/python3-debian12:nonroot
 LABEL org.opencontainers.image.title="cloud-native-api" \
       org.opencontainers.image.description="Production-ready FastAPI with observability" \
       org.opencontainers.image.authors="Brayan PD <brayanpd23@gmail.com>" \
-      org.opencontainers.image.source="https://github.com/brayanpd/cloud-native-api"
+      org.opencontainers.image.source="https://github.com/severlansdev/cloud-native-api"
 
 WORKDIR /app
 
