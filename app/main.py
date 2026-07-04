@@ -25,12 +25,7 @@ settings = get_settings()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Application lifespan handler for startup/shutdown events."""
-    # Startup: Initialize Prometheus instrumentation
-    Instrumentator(
-        should_group_status_codes=True,
-        should_ignore_untemplated=True,
-        excluded_handlers=["/health", "/ready", "/metrics"],
-    ).instrument(app).expose(app, endpoint="/metrics", include_in_schema=True)
+    # Add any future startup logic here
     yield
     # Shutdown: cleanup resources if needed
 
@@ -49,6 +44,14 @@ app = FastAPI(
 
 # ---- Middleware ----
 app.add_middleware(StructuredLoggingMiddleware)
+
+# ---- Prometheus Instrumentation ----
+# Must be called outside lifespan when using multiple workers (Uvicorn multiprocessing)
+Instrumentator(
+    should_group_status_codes=True,
+    should_ignore_untemplated=True,
+    excluded_handlers=["/health", "/ready", "/metrics"],
+).instrument(app).expose(app, endpoint="/metrics", include_in_schema=True)
 
 # ---- Routers ----
 app.include_router(items.router)

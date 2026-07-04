@@ -9,7 +9,7 @@
 # ============================================================
 
 # ---- Stage 1: Builder ----
-FROM python:3.12-slim AS builder
+FROM python:3.11-slim AS builder
 
 WORKDIR /build
 
@@ -35,8 +35,12 @@ LABEL org.opencontainers.image.title="cloud-native-api" \
 
 WORKDIR /app
 
-# Copy installed Python packages from builder
-COPY --from=builder /install/lib/python3.12/site-packages /usr/lib/python3.12/site-packages
+# Set PYTHONPATH so Distroless can find installed packages
+# (Distroless sys.path doesn't include site-packages by default)
+ENV PYTHONPATH="/usr/lib/python3.11/site-packages"
+
+# Copy installed Python packages from builder (3.11 matches Distroless runtime)
+COPY --from=builder /install/lib/python3.11/site-packages /usr/lib/python3.11/site-packages
 # Copy application code
 COPY --from=builder /build/app ./app
 
