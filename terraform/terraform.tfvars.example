@@ -1,0 +1,26 @@
+# ============================================================
+# Example Terraform Variables
+# ============================================================
+# Copy this file to terraform.tfvars and customize:
+#   cp terraform.tfvars.example terraform.tfvars
+# ============================================================
+
+project_name = "cloud-native-api"
+environment  = "dev"
+aws_region   = "us-east-1"
+
+# Set to true to test with LocalStack (no AWS account needed)
+use_localstack = false
+
+# Networking
+vpc_cidr            = "10.0.0.0/16"
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+
+# ECS Task sizing (Free Tier friendly)
+task_cpu     = 256   # 0.25 vCPU
+task_memory  = 512   # 512 MB
+desired_count = 2
+
+# Health check
+container_port    = 8000
+health_check_path = "/health"

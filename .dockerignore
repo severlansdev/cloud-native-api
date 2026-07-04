@@ -1,0 +1,41 @@
+# Version control
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+htmlcov
+.coverage
+.venv
+venv
+
+# IDE
+.vscode
+.idea
+*.swp
+
+# Docker
+docker-compose*.yml
+
+# Terraform
+terraform/
+
+# Documentation
+docs/
+*.md
+LICENSE
+
+# CI/CD
+.github/
+
+# Monitoring configs (not needed in app image)
+monitoring/
+
+# Misc
+.env
+.env.*
+scripts/
+Makefile
